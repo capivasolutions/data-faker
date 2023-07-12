@@ -1,11 +1,15 @@
 import pandas as pd
-from time import sleep
 from pandas import DataFrame
-from imblearn.over_sampling import SMOTE, BorderlineSMOTE
+from imblearn.over_sampling import BorderlineSMOTE
 from config import Logger, Environment
 
 
 class Faker:
+    """
+        Faker can generate fake transactions based on input dataset.
+        It uses oversampling to generate new fraudulent transactions.
+    """
+
     def __init__(self) -> None:
         self.data = None
         self.rebalanced_data = None
@@ -36,7 +40,8 @@ class Faker:
 
         self.rebalanced_data = pd.DataFrame(x_smote, columns=self.data.columns)
         self.rebalanced_data['Class'] = y_smote
-        self.logger.debug('Oversampling applied to dataset')
+        self.logger.debug(
+            f'Oversampling applied to dataset. {len(self.rebalanced_data)} transactions')
 
     def generate_transaction(self) -> DataFrame:
         self.logger.debug('Finding a random transaction from dataset')
@@ -44,5 +49,6 @@ class Faker:
         self.rebalanced_data = self.rebalanced_data.drop(
             random_transaction.index)
         self.logger.debug(
-            'Random transaction details:\n{}'.format(random_transaction))
+            f'{len(self.rebalanced_data)} transactions remaining')
+        self.logger.debug(f'Random transaction details:\n{random_transaction}')
         return random_transaction

@@ -5,7 +5,7 @@ from faker import Faker
 def main():
     faker = Faker()
     while True:
-        transaction = faker.generate_transaction()
+        _transaction = faker.generate_transaction()
         sleep(3)
 
 
