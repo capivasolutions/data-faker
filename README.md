@@ -1,3 +1,5 @@
+![Cover (1)](https://github.com/capivasolutions/data-faker/assets/31314944/c22bf113-a75a-470f-8792-90c803a9666d)
+
 # 🧞‍♂️ Data Faker
 
 Aplicação responsável por criar transações fakes a partir do Dataset original `creditcard.csv` e enviar ao back-end para processamento.
