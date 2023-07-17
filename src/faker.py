@@ -1,6 +1,6 @@
 import pandas as pd
 from pandas import DataFrame
-from imblearn.over_sampling import BorderlineSMOTE
+from imblearn.over_sampling import SMOTE
 from config import Logger, Environment
 
 
@@ -14,7 +14,6 @@ class Faker:
         self.data = None
         self.rebalanced_data = None
         self.k_neighbors = 3
-        self.m_neighbors = 2
         self.sampling_strategy = 'minority'
         self.logger = Logger.get_instance()
         self.__init()
@@ -33,9 +32,8 @@ class Faker:
         smote_attributes = self.data.drop('Class', axis=1)
         smote_class = self.data['Class']
 
-        smote = BorderlineSMOTE(k_neighbors=self.k_neighbors,
-                                m_neighbors=self.m_neighbors,
-                                sampling_strategy=self.sampling_strategy)
+        smote = SMOTE(k_neighbors=self.k_neighbors,
+                      sampling_strategy=self.sampling_strategy)
         x_smote, y_smote = smote.fit_resample(smote_attributes, smote_class)
 
         self.rebalanced_data = pd.DataFrame(x_smote, columns=self.data.columns)
