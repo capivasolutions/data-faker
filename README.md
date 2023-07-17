@@ -13,6 +13,9 @@ O dataset é carregado em memória, é realizado o oversample da classe fraudule
 ## Como executar
 
 ```bash
+# Será necessário acessar fazer o download do dataset em https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud
+# Baixe o .zip, faça a extração do arquivo creditcard.csv e coloque-o em data/creditcard.csv
+
 # Crie um arquivo .env na raiz do repositório e altere as variáveis (se necessário)
 cp .env.example .env
 
